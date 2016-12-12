@@ -5,11 +5,14 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
-  <ion-navbar>
-    <ion-title>noteDetails</ion-title>
-  </ion-navbar>
-
+	<ion-navbar>
+		<ion-buttons end>
+			<button ion-button icon-left (click)="editTapped()">
+	        	<ion-icon name="create"></ion-icon>
+	        	Edit
+	      	</button>
+		</ion-buttons>
+	</ion-navbar>
 </ion-header>
 
 

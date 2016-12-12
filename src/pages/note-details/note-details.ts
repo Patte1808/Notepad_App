@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { NoteFormPage } from '../note-form/note-form';
 
 /*
   Generated class for the NoteDetails page.
@@ -23,4 +24,9 @@ export class NoteDetailsPage {
     console.log('Hello NoteDetailsPage Page');
   }
 
+  editTapped() {
+    this.navCtrl.push(NoteFormPage, {
+      note: this.note
+    });
+  }
 }

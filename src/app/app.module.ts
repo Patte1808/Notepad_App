@@ -3,12 +3,15 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { NoteDetailsPage } from '../pages/note-details/note-details';
+import { NoteFormPage } from '../pages/note-form/note-form';
+
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    NoteDetailsPage
+    NoteDetailsPage,
+    NoteFormPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -17,7 +20,8 @@ import { NoteDetailsPage } from '../pages/note-details/note-details';
   entryComponents: [
     MyApp,
     HomePage,
-    NoteDetailsPage
+    NoteDetailsPage,
+    NoteFormPage
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
 })

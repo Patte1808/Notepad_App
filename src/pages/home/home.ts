@@ -40,6 +40,16 @@ export class HomePage {
   		});
   	}
 
+    newTapped() {
+      this.notesDataService.newNote().subscribe(
+        data => {
+          this.notes = data;
+        },
+        err => console.error(err),
+        () => console.log('Completed new note')
+      );
+    }
+
   	ionViewDidLoad() {
     	console.log('Hello HomePage Page');
   	}
