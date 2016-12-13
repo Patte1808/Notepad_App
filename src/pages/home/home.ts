@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { NoteDetailsPage } from '../note-details/note-details';
+import { NoteFormPage } from '../note-form/note-form';
 
 import {NotesData} from '../../providers/notes-data';
 
@@ -41,13 +42,24 @@ export class HomePage {
   	}
 
     newTapped() {
-      this.notesDataService.newNote().subscribe(
+      this.navCtrl.push(NoteFormPage);
+    }
+
+    removeNote(note) {
+      this.notesDataService.removeNote(note).subscribe(
         data => {
-          this.notes = data;
+
         },
         err => console.error(err),
-        () => console.log('Completed new note')
-      );
+        () => {
+          for(let i = 0; i < this.notes.length; i++) {
+            if(this.notes[i].id === note.id) {
+              this.notes.splice(i, 1);
+              break;
+            }
+          }
+        }
+      );  
     }
 
   	ionViewDidLoad() {

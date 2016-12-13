@@ -20,7 +20,7 @@ export class NoteFormPage {
 	public note;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private notesDataService: NotesData) {
-  	this.note = this.navParams.get('note');
+  	this.note = this.navParams.get('note') || {id: null, title: '', body: ''}
   }
 
   ionViewDidLoad() {
@@ -28,14 +28,26 @@ export class NoteFormPage {
   }
 
   saveTapped() {
-  	this.notesDataService.updateNote(this.note).subscribe(
+    if(this.note.id === null) {
+  	  this.notesDataService.newNote(this.note).subscribe(
+        data => {
+
+        },
+        err => console.error(err),
+        () => {
+          this.navCtrl.push(HomePage);
+        }
+      );
+    } else {
+      this.notesDataService.updateNote(this.note).subscribe(
         data => {
         },
         err => console.error(err),
         () => {
-        	this.navCtrl.push(HomePage);
+          this.navCtrl.push(HomePage);
         }
-    );
+      );
+    }
   }
 
   setTitle(val) {

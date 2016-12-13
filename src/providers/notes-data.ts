@@ -23,9 +23,9 @@ export class NotesData {
   	return notes;
   }
 
-  newNote() {
+  newNote(note) {
     return this.http.post(`${this.host}notes`, {
-      note: {title: 'New Note', body: ''}
+      note: note
     }).map((res) => res.json());
   }
 
@@ -33,6 +33,11 @@ export class NotesData {
     return this.http.put(`${this.host}notes/${note.id}`, {
       note: note
     }).map((res) => res.json());
+  }
+
+  removeNote(note) {
+    return this.http.delete(`${this.host}notes/${note.id}`)
+           .map((res) => res.json());
   }
 
 }

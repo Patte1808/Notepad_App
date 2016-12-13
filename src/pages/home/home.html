@@ -8,8 +8,9 @@
 
   <ion-toolbar>
     <ion-buttons start>
-      <button ion-button icon-only (click)="newTapped()">
+      <button ion-button icon-left (click)="newTapped()">
         <ion-icon name="create"></ion-icon>
+        New Note
       </button>
     </ion-buttons>
   </ion-toolbar>
@@ -19,8 +20,14 @@
 
 <ion-content padding>
 	<ion-list>
-		<button ion-item *ngFor="let note of notes" (click)="itemTapped(note)">
-			<h2>{{note.title}}</h2>
-		</button>
+		<ion-item-sliding *ngFor="let note of notes">
+      <ion-item (click)="itemTapped(note)">
+        {{note.title}}
+      </ion-item>
+
+      <ion-item-options side="right">
+        <button ion-button color="danger" (click)="removeNote(note)">Delete</button>
+      </ion-item-options>
+    </ion-item-sliding>
 	</ion-list>
 </ion-content>
